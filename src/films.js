@@ -115,7 +115,7 @@ function moviesAverageByCategory(array, genre) {
 function hoursToMinutes(array) {
   debugger
 
-  const newArr = [...array];
+  let newArr = array.map(a => {return {...a}});
 
   for(let i = 0; i < newArr.length; i++) {
 
@@ -124,19 +124,23 @@ function hoursToMinutes(array) {
 
     if(durationMatches[1] !== undefined) {
 
-      const finalDuration = ((Number(durationMatches[0]) * 60) + Number(durationMatches[1]))
+      const finalDuration = ((parseInt(durationMatches[0]) * 60) + parseInt(durationMatches[1]))
 
       newArr[i].duration = finalDuration;
 
     } else {
 
-      const finalDuration = (Number(durationMatches[0]) * 60)
+      const finalDuration = (parseInt(durationMatches[0]) * 60)
 
       newArr[i].duration = finalDuration;
     }
   }
 
+  const notCloned = array == newArr;
+
   console.log("EXERCICE 7 ->", newArr);
+  console.log(array)
+  console.log(notCloned)
   return newArr;
 }
 
